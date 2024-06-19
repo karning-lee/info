@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Fixed height */
+    overflow: hidden; /* Prevent scrolling */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    background: url('assets/img/onesec.gif') no-repeat center center fixed;
+    background-size: contain; /* Scale to fit */
+    user-select: none; /* Prevent text selection */
+    -webkit-user-drag: none; /* Prevent image dragging on Safari */
+}
+
+.content {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    letter-spacing: 1.4px;
+    line-height: 1.2;
+}
+
+#text {
+    font-size: 18px;
+    transition: letter-spacing 0.5s ease;
+}
+.flipText {
+        text-align: left;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        letter-spacing: 1.4px;
+        line-height: 1.2;
+}
+
+.hover-flip a {
+    color: inherit; /* Inherit the color from the parent */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px;
+}
+
+.hover-flip a:hover {
+    color: black; /* Change color on hover if needed */
+}
+
+.hover-flip {
+    color: inherit; /* Inherit the color from the parent */
+    text-decoration: none; /* Remove underline */
+    display: inline-block;
+    /* transition: transform 0.3s ease; */
+}
+.hover-flip:hover {
+    color: black;
+    transform: scaleX(-1); /* Flips the text */
+}
