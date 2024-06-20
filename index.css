@@ -24,7 +24,7 @@ body, html {
 }
 
 #text {
-    font-size: 18px;
+    font-size: 22.5px;
     transition: letter-spacing 0.5s ease;
 }
 .flipText {
@@ -39,7 +39,7 @@ body, html {
 .hover-flip a {
     color: inherit; /* Inherit the color from the parent */
     text-decoration: none; /* Remove underline */
-    font-size: 18px;
+    font-size: 22.5px;
 }
 
 .hover-flip a:hover {
