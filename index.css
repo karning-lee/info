@@ -20,6 +20,7 @@ body, html {
     padding: 20px;
     letter-spacing: 1.4px;
     line-height: 1.2;
+    color: red;
 }
 
 #text {
@@ -42,7 +43,7 @@ body, html {
 }
 
 .hover-flip a:hover {
-    color: black; /* Change color on hover if needed */
+    color: red; /* Change color on hover if needed */
 }
 
 .hover-flip {
@@ -52,6 +53,38 @@ body, html {
     /* transition: transform 0.3s ease; */
 }
 .hover-flip:hover {
-    color: black;
+    color: red;
     transform: scaleX(-1); /* Flips the text */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        max-width: 90%;
+        margin: 0 10px; /* Adjust margin for smaller screens */
+    }
+
+    #text {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        max-width: 100%;
+        margin: 0 5px; /* Adjust margin for smaller screens */
+    }
+
+    #text {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    .hover-flip a {
+        color: inherit; /* Inherit the color from the parent */
+        text-decoration: none; /* Remove underline */
+        font-size: 14px;
+    }
+    
+    .hover-flip a:hover {
+        color: red; /* Change color on hover if needed */
+    }
 }
