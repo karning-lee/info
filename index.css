@@ -55,6 +55,7 @@ body, html {
 .hover-flip:hover {
     color: red;
     transform: scaleX(-1); /* Flips the text */
+    filter: invert(1); /* Add invert effect on hover */
 }
 
 /* Media Queries for Responsive Design */
