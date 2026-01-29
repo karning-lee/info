@@ -56,20 +56,6 @@ html, body {
 /* MAIN TEXT */
 #text {
   font-size: 22.5px;
-  transition: letter-spacing 0.5s ease;
-}
-
-/* FLIP LINK */
-.hover-flip {
-  display: inline-block;
-  font-size: 22.5px;
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.hover-flip:hover {
-  transform: scaleX(-1);
 }
 
 /* TABLET + MOBILE */
