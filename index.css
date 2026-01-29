@@ -9,11 +9,11 @@ html, body {
   justify-content: left;
   align-items: left;
 
-  /* Desktop default */
+  /* Desktop background */
   background-image: url("assets/img/onesec.gif");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  background-size: cover; /* FULL BLEED */
   background-attachment: fixed;
 
   user-select: none;
@@ -44,33 +44,29 @@ html, body {
   line-height: 1.2;
 }
 
-.hover-flip a {
-  text-decoration: none;
-  font-size: 22.5px;
-}
-
-.hover-flip a:hover {
-  color: red;
-}
-
 .hover-flip {
+  color: inherit;
   text-decoration: none;
   display: inline-block;
 }
 
-.hover-flip:hover {
-  color: red;
-  transform: scaleX(-1);
-  filter: invert(1);
+.hover-flip a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 22.5px;
 }
 
-/* Mobile background swap */
+/* Hover effect: flip ONLY */
+.hover-flip:hover {
+  transform: scaleX(-1);
+}
+
+/* Tablet + Mobile */
 @media (max-width: 768px) {
   html, body {
     background-image: url("assets/img/onesec_mobile.gif") !important;
-
-    /* mobile Safari often hates fixed backgrounds */
-    background-attachment: scroll;
+    background-size: cover;
+    background-attachment: scroll; /* iOS Safari fix */
   }
 
   .content {
@@ -83,6 +79,7 @@ html, body {
   }
 }
 
+/* Small Mobile */
 @media (max-width: 480px) {
   .content {
     max-width: 100%;
