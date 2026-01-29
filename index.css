@@ -1,72 +1,68 @@
+/* RESET */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: left;
-  align-items: left;
 
-  /* Desktop background */
-  background-image: url("assets/img/onesec.gif");
+  /* allow vertical scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: sans-serif;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  /* DESKTOP BACKGROUND */
+  background-image: url("assets/img/onesec.gif?v=3");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; /* FULL BLEED */
+  background-size: cover;
   background-attachment: fixed;
 
   user-select: none;
   -webkit-user-drag: none;
 }
 
+/* CONTENT BLOCK */
 .content {
-  text-align: left;
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
+  text-align: left;
+
   letter-spacing: 1.4px;
   line-height: 1.2;
   color: red;
 }
 
+/* MAIN TEXT */
 #text {
   font-size: 22.5px;
   transition: letter-spacing 0.5s ease;
 }
 
-.flipText {
-  text-align: left;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  letter-spacing: 1.4px;
-  line-height: 1.2;
-}
-
+/* FLIP LINK */
 .hover-flip {
-  color: inherit;
-  text-decoration: none;
   display: inline-block;
-}
-
-.hover-flip a {
+  font-size: 22.5px;
   color: inherit;
   text-decoration: none;
-  font-size: 22.5px;
+  transition: transform 0.2s ease;
 }
 
-/* Hover effect: flip ONLY */
+/* FLIP ONLY */
 .hover-flip:hover {
   transform: scaleX(-1);
 }
 
-/* Tablet + Mobile */
+/* TABLET + MOBILE */
 @media (max-width: 768px) {
   html, body {
-    background-image: url("assets/img/onesec_mobile.gif") !important;
-    background-size: cover;
-    background-attachment: scroll; /* iOS Safari fix */
+    background-image: url("assets/img/onesec_mobile.gif?v=3") !important;
+    background-attachment: scroll;
   }
 
   .content {
@@ -74,23 +70,21 @@ html, body {
     margin: 0 10px;
   }
 
-  #text {
+  #text,
+  .hover-flip {
     font-size: 16px;
   }
 }
 
-/* Small Mobile */
+/* SMALL MOBILE */
 @media (max-width: 480px) {
   .content {
     max-width: 100%;
     margin: 0 5px;
   }
 
-  #text {
-    font-size: 14px;
-  }
-
-  .hover-flip a {
+  #text,
+  .hover-flip {
     font-size: 14px;
   }
 }
