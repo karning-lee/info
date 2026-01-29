@@ -1,93 +1,101 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh; /* Fixed height */
-    overflow: hidden; /* Prevent scrolling */
-    font-family: sans-serif;
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    background: url('assets/img/onesec.gif') no-repeat center center fixed;
-    background-size: contain; /* Scale to fit */
-    user-select: none; /* Prevent text selection */
-    -webkit-user-drag: none; /* Prevent image dragging on Safari */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+
+  /* Desktop default */
+  background-image: url("assets/img/onesec.gif");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-attachment: fixed;
+
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .content {
-    text-align: left;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    letter-spacing: 1.4px;
-    line-height: 1.2;
-    color: red;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  letter-spacing: 1.4px;
+  line-height: 1.2;
+  color: red;
 }
 
 #text {
-    font-size: 22.5px;
-    transition: letter-spacing 0.5s ease;
+  font-size: 22.5px;
+  transition: letter-spacing 0.5s ease;
 }
 
 .flipText {
-    text-align: left;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    letter-spacing: 1.4px;
-    line-height: 1.2;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  letter-spacing: 1.4px;
+  line-height: 1.2;
 }
 
 .hover-flip a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 22.5px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 22.5px;
 }
 
 .hover-flip a:hover {
-    color: red;
+  color: red;
 }
 
 .hover-flip {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .hover-flip:hover {
-    color: red;
-    transform: scaleX(-1);
-    filter: invert(1);
+  color: red;
+  transform: scaleX(-1);
+  filter: invert(1);
 }
 
-/* Tablet + Mobile */
+/* Mobile background swap */
 @media (max-width: 768px) {
-    body, html {
-        background: url('assets/img/onesec_mobile.gif') no-repeat center center fixed;
-        background-size: contain;
-    }
+  html, body {
+    background-image: url("assets/img/onesec_mobile.gif") !important;
 
-    .content {
-        max-width: 90%;
-        margin: 0 10px;
-    }
+    /* mobile Safari often hates fixed backgrounds */
+    background-attachment: scroll;
+  }
 
-    #text {
-        font-size: 16px;
-    }
+  .content {
+    max-width: 90%;
+    margin: 0 10px;
+  }
+
+  #text {
+    font-size: 16px;
+  }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-    .content {
-        max-width: 100%;
-        margin: 0 5px;
-    }
+  .content {
+    max-width: 100%;
+    margin: 0 5px;
+  }
 
-    #text {
-        font-size: 14px;
-    }
+  #text {
+    font-size: 14px;
+  }
 
-    .hover-flip a {
-        font-size: 14px;
-    }
+  .hover-flip a {
+    font-size: 14px;
+  }
 }
