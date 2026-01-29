@@ -1,11 +1,10 @@
-/* RESET */
+/* RESET + BACKGROUND */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
 
-  /* allow vertical scroll */
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -15,8 +14,7 @@ html, body {
   justify-content: flex-start;
   align-items: flex-start;
 
-  /* DESKTOP BACKGROUND */
-  background-image: url("assets/img/onesec.gif?v=3");
+  background-image: url("assets/img/onesec.gif?v=4");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -26,7 +24,24 @@ html, body {
   -webkit-user-drag: none;
 }
 
-/* CONTENT BLOCK */
+/* FIXED EMAIL — ALWAYS TOP LEFT */
+.site-email {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  font-size: 18pt;
+  line-height: 1;
+  letter-spacing: 0.5px;
+
+  color: red;
+  text-decoration: none;
+
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+/* CONTENT */
 .content {
   max-width: 500px;
   margin: 0 auto;
@@ -53,7 +68,6 @@ html, body {
   transition: transform 0.2s ease;
 }
 
-/* FLIP ONLY */
 .hover-flip:hover {
   transform: scaleX(-1);
 }
@@ -61,7 +75,7 @@ html, body {
 /* TABLET + MOBILE */
 @media (max-width: 768px) {
   html, body {
-    background-image: url("assets/img/onesec_mobile.gif?v=3") !important;
+    background-image: url("assets/img/onesec_mobile.gif?v=4") !important;
     background-attachment: scroll;
   }
 
