@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,11 +8,96 @@ l<!DOCTYPE html>
 </head>
 
 <body>
-
   <!-- FIXED EMAIL -->
   <a href="mailto:karning.lee@gmail.com" class="site-email">
     karning.lee@gmail.com
   </a>
 
+  <!-- CLICK ZONES (LEFT = BACK, RIGHT = FORWARD) -->
+  <div class="nav-zone nav-left" aria-hidden="true"></div>
+  <div class="nav-zone nav-right" aria-hidden="true"></div>
+
+  <script>
+    // ---------------------------
+    // SLIDES: add more here
+    // Keep your current images as first slide
+    // ---------------------------
+    const slides = [
+      {
+        desktop: 'assets/img/onesec.gif?v=4',
+        mobile: 'assets/img/onesec_mobile.gif?v=4'
+      },
+
+      // Add more slides below (examples):
+      // { desktop: 'assets/img/slide2.jpg', mobile: 'assets/img/slide2_mobile.jpg' },
+      // If you only have one version, reuse it:
+      // { desktop: 'assets/img/slide3.jpg', mobile: 'assets/img/slide3.jpg' },
+    ];
+
+    let index = 0;
+
+    function setBackgroundForSlide(i) {
+      const s = slides[i];
+
+      // Update CSS variables used by your existing background rules
+      document.documentElement.style.setProperty('--bg-desktop', `url("${s.desktop}")`);
+
+      // If a mobile version isn't provided, fall back to desktop
+      const mobileUrl = s.mobile ? s.mobile : s.desktop;
+      document.documentElement.style.setProperty('--bg-mobile', `url("${mobileUrl}")`);
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      setBackgroundForSlide(index);
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      setBackgroundForSlide(index);
+    }
+
+    // Initial
+    setBackgroundForSlide(index);
+
+    // Click zones
+    const leftZone = document.querySelector('.nav-left');
+    const rightZone = document.querySelector('.nav-right');
+
+    leftZone.addEventListener('click', prevSlide);
+    rightZone.addEventListener('click', nextSlide);
+
+    // Keyboard support (optional, nice for desktop)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Touch swipe support (optional, works on mobile)
+    let touchStartX = null;
+
+    window.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+
+      const touchEndX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : null;
+      if (touchEndX === null) {
+        touchStartX = null;
+        return;
+      }
+
+      const dx = touchEndX - touchStartX;
+      const threshold = 50; // px
+
+      if (dx > threshold) prevSlide();      // swipe right = back
+      else if (dx < -threshold) nextSlide(); // swipe left = forward
+
+      touchStartX = null;
+    }, { passive: true });
+  </script>
 </body>
 </html>
