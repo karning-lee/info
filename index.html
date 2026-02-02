@@ -53,15 +53,8 @@
     setSlide(index);
 
     // click zones
-    document.querySelector('.nav-left').addEventListener('click', (e) => {
-      e.preventDefault();
-      prevSlide();
-    });
-
-    document.querySelector('.nav-right').addEventListener('click', (e) => {
-      e.preventDefault();
-      nextSlide();
-    });
+    document.querySelector('.nav-left').addEventListener('click', prevSlide);
+    document.querySelector('.nav-right').addEventListener('click', nextSlide);
 
     // keyboard
     window.addEventListener('keydown', (e) => {
@@ -69,7 +62,7 @@
       if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    // update on resize (switch desktop/mobile)
+    // resize swap (desktop ↔ mobile)
     window.addEventListener('resize', () => setSlide(index));
 
     // touch swipe
