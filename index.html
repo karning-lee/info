@@ -8,6 +8,9 @@
 </head>
 
 <body>
+  <!-- FULLSCREEN SLIDE IMAGE -->
+  <img id="slide" alt="" />
+
   <!-- FIXED EMAIL -->
   <a href="mailto:karning.lee@gmail.com" class="site-email">
     karning.lee@gmail.com
@@ -18,63 +21,58 @@
   <div class="nav-zone nav-right" aria-hidden="true"></div>
 
   <script>
-    /* ===============================
-       SLIDES (ADD IMAGES HERE ONLY)
-       =============================== */
-
     const slides = [
-      {
-        desktop: 'assets/img/onesec.gif?v=4',
-        mobile: 'assets/img/onesec_mobile.gif?v=4'
-      },
-      {
-        desktop: 'assets/img/stirfry1.jpg'
-      },
-      {
-        desktop: 'assets/img/stirfry2.jpg'
-      }
+      { desktop: 'assets/img/onesec.gif?v=4', mobile: 'assets/img/onesec_mobile.gif?v=4' },
+      { desktop: 'assets/img/stirfry1.jpg' },
+      { desktop: 'assets/img/stirfry2.jpg' }
     ];
 
     let index = 0;
 
-    function setBackgroundForSlide(i) {
+    function isMobile() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function setSlide(i) {
       const s = slides[i];
-
-      document.documentElement.style.setProperty(
-        '--bg-desktop',
-        `url("${s.desktop}")`
-      );
-
-      document.documentElement.style.setProperty(
-        '--bg-mobile',
-        `url("${s.mobile ? s.mobile : s.desktop}")`
-      );
+      const src = (isMobile() && s.mobile) ? s.mobile : s.desktop;
+      document.getElementById('slide').src = src;
     }
 
     function nextSlide() {
       index = (index + 1) % slides.length;
-      setBackgroundForSlide(index);
+      setSlide(index);
     }
 
     function prevSlide() {
       index = (index - 1 + slides.length) % slides.length;
-      setBackgroundForSlide(index);
+      setSlide(index);
     }
 
-    /* INIT */
-    setBackgroundForSlide(index);
+    // init
+    setSlide(index);
 
-    /* CLICK NAVIGATION */
-    document.querySelector('.nav-left').addEventListener('click', prevSlide);
-    document.querySelector('.nav-right').addEventListener('click', nextSlide);
+    // click zones
+    document.querySelector('.nav-left').addEventListener('click', (e) => {
+      e.preventDefault();
+      prevSlide();
+    });
 
-    /* KEYBOARD NAV */
+    document.querySelector('.nav-right').addEventListener('click', (e) => {
+      e.preventDefault();
+      nextSlide();
+    });
+
+    // keyboard
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    /* TOUCH SWIPE */
+    // update on resize (switch desktop/mobile)
+    window.addEventListener('resize', () => setSlide(index));
+
+    // touch swipe
     let touchStartX = null;
 
     window.addEventListener('touchstart', (e) => {
