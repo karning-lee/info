@@ -14,7 +14,11 @@ html, body {
   justify-content: flex-start;
   align-items: flex-start;
 
-  background-image: url("assets/img/onesec.gif?v=4");
+  /* Default backgrounds (also used as JS fallback) */
+  --bg-desktop: url("assets/img/onesec.gif?v=4");
+  --bg-mobile: url("assets/img/onesec_mobile.gif?v=4");
+
+  background-image: var(--bg-desktop);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -41,6 +45,33 @@ html, body {
   pointer-events: auto;
 }
 
+/* CLICK ZONES */
+.nav-zone {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 50vw;
+
+  /* Make sure it sits above the background, below the email */
+  z-index: 1000;
+
+  /* Transparent but clickable */
+  background: transparent;
+  pointer-events: auto;
+
+  /* Prevent highlight/drag weirdness */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.nav-left {
+  left: 0;
+}
+
+.nav-right {
+  right: 0;
+}
+
 /* CONTENT */
 .content {
   max-width: 500px;
@@ -61,7 +92,7 @@ html, body {
 /* TABLET + MOBILE */
 @media (max-width: 768px) {
   html, body {
-    background-image: url("assets/img/onesec_mobile.gif?v=4") !important;
+    background-image: var(--bg-mobile) !important;
     background-attachment: scroll;
   }
 
