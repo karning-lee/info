@@ -14,7 +14,7 @@ html, body {
   justify-content: flex-start;
   align-items: flex-start;
 
-  /* Default backgrounds (also used as JS fallback) */
+  /* DEFAULT BACKGROUNDS */
   --bg-desktop: url("assets/img/onesec.gif?v=4");
   --bg-mobile: url("assets/img/onesec_mobile.gif?v=4");
 
@@ -28,7 +28,7 @@ html, body {
   -webkit-user-drag: none;
 }
 
-/* FIXED EMAIL — ALWAYS TOP LEFT */
+/* FIXED EMAIL */
 .site-email {
   position: fixed;
   top: 20px;
@@ -52,27 +52,15 @@ html, body {
   height: 100vh;
   width: 50vw;
 
-  /* Make sure it sits above the background, below the email */
   z-index: 1000;
-
-  /* Transparent but clickable */
   background: transparent;
   pointer-events: auto;
-
-  /* Prevent highlight/drag weirdness */
-  user-select: none;
-  -webkit-user-drag: none;
 }
 
-.nav-left {
-  left: 0;
-}
+.nav-left { left: 0; }
+.nav-right { right: 0; }
 
-.nav-right {
-  right: 0;
-}
-
-/* CONTENT */
+/* CONTENT (SAFE TO KEEP / UNUSED) */
 .content {
   max-width: 500px;
   margin: 0 auto;
@@ -101,8 +89,7 @@ html, body {
     margin: 0 10px;
   }
 
-  #text,
-  .hover-flip {
+  #text {
     font-size: 16px;
   }
 }
@@ -114,8 +101,7 @@ html, body {
     margin: 0 5px;
   }
 
-  #text,
-  .hover-flip {
+  #text {
     font-size: 14px;
   }
 }
