@@ -11,6 +11,9 @@ html, body {
   position: fixed;
   inset: 0;
 
+  /* IMPORTANT: set a background so any micro-gaps aren't white */
+  background: #000;
+
   font-family: sans-serif;
 
   user-select: none;
@@ -19,19 +22,24 @@ html, body {
 }
 
 /* ===============================
-   FULL BLEED IMAGE (NO MARGINS)
+   FULL BLEED IMAGE (BULLETPROOF)
    =============================== */
 
 #slide {
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
 
-  width: 100vw;
-  height: 100vh;
+  /* Overfill slightly to eliminate 1px seams on some browsers/zooms */
+  width: 101vw;
+  height: 101vh;
 
-  object-fit: cover;      /* THIS removes white margins */
+  transform: translate(-50%, -50%);
+
+  object-fit: cover;
   object-position: center;
 
+  display: block;           /* avoids inline image gaps */
   z-index: 1;
   pointer-events: none;
 }
