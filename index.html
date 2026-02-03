@@ -9,7 +9,7 @@
 
 <body>
   <!-- FULLSCREEN SLIDE IMAGE -->
-  <img id="slide" alt="" />
+  <img id="slide" alt="" draggable="false" />
 
   <!-- FIXED EMAIL -->
   <a href="mailto:karning.lee@gmail.com" class="site-email">
@@ -28,7 +28,7 @@
       { desktop: 'assets/img/stirfry3.jpg' },
       { desktop: 'assets/img/stirfry4.jpg' },
       { desktop: 'assets/img/stirfry5.jpg' },
-      // { desktop: 'assets/img/stirfry6.jpg' , mobile: 'assets/img/stirfry6_mobile.jpg' },
+      // { desktop: 'assets/img/stirfry6.jpg', mobile: 'assets/img/stirfry6_mobile.jpg' },
       { desktop: 'assets/img/stirfry7.jpg' },
       { desktop: 'assets/img/stirfry8.jpg' },
       { desktop: 'assets/img/stirfry9.gif' }
@@ -91,6 +91,10 @@
 
       touchStartX = null;
     }, { passive: true });
+
+    // discourage casual download
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('dragstart', (e) => e.preventDefault());
   </script>
 </body>
 </html>
