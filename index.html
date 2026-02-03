@@ -8,17 +8,19 @@
 </head>
 
 <body>
-  <!-- FULLSCREEN SLIDE IMAGE -->
-  <img id="slide" alt="" draggable="false" />
+  <!-- STAGE: ALWAYS FULL VIEWPORT -->
+  <div id="stage">
+    <img id="slide" alt="" draggable="false" />
 
-  <!-- FIXED EMAIL -->
-  <a href="mailto:karning.lee@gmail.com" class="site-email">
-    karning.lee@gmail.com
-  </a>
+    <!-- FIXED EMAIL -->
+    <a href="mailto:karning.lee@gmail.com" class="site-email">
+      karning.lee@gmail.com
+    </a>
 
-  <!-- CLICK ZONES -->
-  <div class="nav-zone nav-left" aria-hidden="true"></div>
-  <div class="nav-zone nav-right" aria-hidden="true"></div>
+    <!-- CLICK ZONES -->
+    <div class="nav-zone nav-left" aria-hidden="true"></div>
+    <div class="nav-zone nav-right" aria-hidden="true"></div>
+  </div>
 
   <script>
     const slides = [
@@ -43,7 +45,8 @@
     function setSlide(i) {
       const s = slides[i];
       const src = (isMobile() && s.mobile) ? s.mobile : s.desktop;
-      document.getElementById('slide').src = src;
+      const img = document.getElementById('slide');
+      img.src = src;
     }
 
     function nextSlide() {
@@ -69,12 +72,15 @@
       if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    // swap on resize
-    window.addEventListener('resize', () => setSlide(index));
+    // resize: force repaint reliably
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => setSlide(index), 50);
+    });
 
     // touch swipe
     let touchStartX = null;
-
     window.addEventListener('touchstart', (e) => {
       if (e.touches.length !== 1) return;
       touchStartX = e.touches[0].clientX;
@@ -82,13 +88,9 @@
 
     window.addEventListener('touchend', (e) => {
       if (touchStartX === null) return;
-
       const dx = e.changedTouches[0].clientX - touchStartX;
-      const threshold = 50;
-
-      if (dx > threshold) prevSlide();
-      if (dx < -threshold) nextSlide();
-
+      if (dx > 50) prevSlide();
+      if (dx < -50) nextSlide();
       touchStartX = null;
     }, { passive: true });
 
