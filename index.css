@@ -1,5 +1,5 @@
 /* ===============================
-   LOCK VIEWPORT — NO SCROLL
+   LOCK VIEWPORT
    =============================== */
 
 html, body {
@@ -19,7 +19,7 @@ html, body {
 }
 
 /* ===============================
-   SLIDE IMAGE — DESKTOP CONTAIN
+   SLIDE IMAGE
    =============================== */
 
 #slide {
@@ -29,11 +29,12 @@ html, body {
   width: 100vw;
   height: 100vh;
 
-  object-fit: contain;     /* NO STRETCH */
+  object-fit: contain;
   object-position: center;
 
   z-index: 1;
-  pointer-events: none;
+
+  pointer-events: none; /* critical: blocks right-click */
 }
 
 /* ===============================
