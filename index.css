@@ -79,5 +79,12 @@ html, body {
   }
 }
 
-.nav-left { left: 0; }
-.nav-right { right: 0; }
+.nav-left  { 
+  left: 0; 
+  cursor: w-resize;   /* ← system left arrow */
+}
+
+.nav-right { 
+  right: 0; 
+  cursor: e-resize;   /* → system right arrow */
+}
