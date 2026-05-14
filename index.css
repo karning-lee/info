@@ -1,15 +1,22 @@
 /* BASE */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
+
   background: #000;
+
   font-family: sans-serif;
 
   user-select: none;
+  -webkit-user-select: none;
   -webkit-user-drag: none;
+
   overscroll-behavior: none;
 }
 
@@ -17,12 +24,14 @@ html, body {
 #stage {
   position: fixed;
   inset: 0;
+
   width: 100vw;
   height: 100vh;
+
   background: #000;
 }
 
-/* Dynamic viewport height support */
+/* Dynamic viewport height */
 @supports (height: 100dvh) {
   #stage {
     height: 100dvh;
@@ -43,12 +52,18 @@ html, body {
   display: block;
 
   pointer-events: none;
+
   z-index: 1;
 }
 
-/* TOP LEFT EMAIL */
-.site-email {
+/* TOP LEFT TEXT */
+.site-email,
+.site-email:link,
+.site-email:visited,
+.site-email:hover,
+.site-email:active {
   position: fixed;
+
   top: 20px;
   left: 20px;
 
@@ -58,16 +73,19 @@ html, body {
 
   color: #000;
 
-  /* solid white outline */
-  text-shadow:
-    1px 1px 0 #fff;
-   /* -1px 1px 0 #fff, */
-    /* 1px -1px 0 #fff, */
-   /* -1px -1px 0 #fff; */
+  /* single pixel shadow */
+  text-shadow: 1px 1px 0 #fff;
 
-  text-decoration: none;
+  text-decoration: none !important;
+
+  -webkit-appearance: none;
+
+  /* improves safari rendering */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 
   z-index: 9999;
+
   pointer-events: auto;
 }
 
@@ -82,6 +100,7 @@ html, body {
   background: transparent;
 
   z-index: 5000;
+
   pointer-events: auto;
 }
 
